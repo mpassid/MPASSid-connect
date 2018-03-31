@@ -1,0 +1,25 @@
+#
+# WARNING: Security Hazard keep this file encrypted all times inproduction
+#
+
+secure:
+  app_root: /opt/data
+  app_home: /opt/data/mpass-connect
+  git_repo: /opt/tmp
+  postgres:
+      db_name: connector
+      db_user: connector
+      db_pass: connector
+      db_serv: 127.0.0.1
+  mpass:
+      ldap_test: robot001
+      selector_roledb_api_token: 13d1365696g3e367b70caf376g23045b6g3j620
+      selector_roledb_api_root: https://mpass-data.local/api/1/
+  httpd:
+      ServerName: localhost
+      ServerAdmin: root@localhost
+      SSLCertificateFile: /etc/pki/tls/certs/localhost.crt
+      SSLCertificateKeyFile: /etc/pki/tls/private/localhost.key
+
+
+

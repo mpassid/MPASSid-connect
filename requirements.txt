@@ -1,0 +1,9 @@
+cffi==1.11.5
+Django==1.11.11
+django-floppyforms==1.7.0
+djangorestframework==3.7.7
+factory-boy==2.10.0
+gunicorn==19.7.1
+requests==2.18.4
+setuptools==38.5.2
+psycopg2-binary

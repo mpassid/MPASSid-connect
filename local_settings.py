@@ -1,0 +1,91 @@
+
+# -*- coding: utf-8 -*-
+# vhost: mpass-connector.csc.fi
+
+from project.settings import *
+
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'conndata',
+    'HOST': '127.0.0.1',
+    'USER': 'conndata',
+    'PASSWORD': 'conndata',
+  }
+}
+
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+SELECTOR_ROLEDB_API_TOKEN = '{{ secure.mpass.selector_roledb_api_token }}'
+SELECTOR_ROLEDB_API_ROOT =  '{{ secure.mpass.selector_roledb_api_root }}'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'root': {
+      'level': 'DEBUG',
+#      'handlers': ['console', 'sentry'],
+      'handlers': ['console', 'file'],
+    },
+    'formatters': {
+      'normal': {
+        'format': '%(asctime)s %(levelname)s %(name)s %(thread)d %(lineno)s %(message)s %(data)s'
+      },
+      'verbose': {
+        'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s %(data)s'
+      },
+    },
+    'filters': {
+      'default': {
+        '()': 'project.logging_helpers.Filter',
+      },
+    },
+    'handlers': {
+#      'sentry': {
+#        'level': 'WARNING',
+#        'class': 'raven.contrib.django.handlers.SentryHandler',
+#      },
+      'console': {
+        'level': 'DEBUG',
+        'class': 'logging.StreamHandler',
+        'formatter': 'verbose',
+        'filters': ['default'],
+      },
+      'file': {
+        'level': 'DEBUG',
+        'class': 'logging.FileHandler',
+        'filename': 'authdata.log',
+        'formatter': 'verbose'
+      },
+    },
+    'loggers': {
+#      'sentry.errors': {
+#        'level': 'DEBUG',
+#        'handlers': ['console'],
+#        'propagate': False,
+#      },
+      'django': {
+        'level': 'WARNING',
+#        'handlers': ['console', 'sentry'],
+        'handlers': ['console', 'file'],
+        'propagate': True,
+      },
+      'selector': {
+#        'handlers': ['console', 'sentry'],
+        'handlers': ['console', 'file'],
+        'level': 'DEBUG',
+        'propagate': False,
+      },
+      '': {
+        'handlers': ['console', 'file'],
+        'level': 'DEBUG',
+        'propagate': False,
+      },
+    },
+}
+
+
+# vim: tabstop=2 expandtab shiftwidth=2 softtabstop=2
+

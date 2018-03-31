@@ -1,0 +1,194 @@
+
+- include_vars: secure.yml
+
+- name: Install httpd and ssl with shibboleth
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - httpd
+    - mod_ssl
+    - python 
+    - python-virtualenv 
+    - postgresql
+    - postgresql-server
+    - python-psycopg2
+    - libsemanage-python
+    - openssl-devel 
+    - openldap-devel 
+    - gcc 
+    - make 
+    - which 
+    - sed 
+    - gawk 
+    - sudo 
+    - bash 
+    - wget
+    - rsync
+    - git
+
+
+- name: Ensure PostgreSQL database is initialized.
+  become: yes
+  become_user: postgres
+  ignore_errors: yes        
+  command: /bin/postgresql-setup initdb
+
+
+- name: Copy other files
+  copy:
+    src: templates/{{ item }}
+    dest: /var/lib/pgsql/data/
+    mode: 0644
+  with_items:
+    - pg_hba.conf
+    - postgresql.conf
+
+
+- name: Enable and start postgresql
+  systemd:
+    name: postgresql
+    enabled: yes
+    masked: no
+    state: started
+
+
+- name: Add user account to run application with  
+  user:
+    name: educloud
+    shell: /bin/bash
+    groups: root
+    append: yes
+    system: yes
+
+
+- name: Create directory for application 
+  file:
+    path: "{{ secure.app_root }}/mpass-connect"
+    owner: educloud
+    group: root
+    mode: 0777
+    state: directory 
+    recurse: yes
+
+
+# - name: Remove files from build tmp
+#  commad: /bin/find "{{ secure.git_repo }}" -delete
+
+- name: Remove build dir
+  file:
+    state: absent
+    path: "{{ secure.git_repo }}"
+
+
+- name: Create build dir
+  file:
+    state: directory
+    path: "{{ secure.git_repo }}"
+    owner: educloud
+    mode: 0777
+
+
+- name: Get MPASSid from GIT source to build home
+  git:
+    repo: 'https://github.com/mpassid/MPASSid-connect'
+    dest: "{{ secure.git_repo }}/mpass-connect"
+
+
+- name: Copy files to application home
+  synchronize:
+    src: "{{ secure.git_repo }}/mpass-connect/"
+    dest: "{{ secure.app_root }}/mpass-connect"
+    archive: yes
+  delegate_to: "{{ inventory_hostname }}"
+
+
+- name: Change ownersip to educloud 
+  file:
+    path: "{{ secure.app_root }}"
+    owner: educloud
+    recurse: yes
+
+
+#
+# - name: Copy other files needed by application
+#  copy:
+#    src: templates/{{ item }}
+#    dest: "{{ secure.app_root }}/mpass-connect"
+#    mode: 0777
+#  with_items:
+#    - gafe-keys.json
+#
+
+
+- name: File Templates
+  template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }} owner={{ item.owner }} group={{ item.owner }}
+  with_items:
+    - { src: db_user.sql.j2, dest: "{{ secure.app_root }}/mpass-connect/db_user.sql", mode: "0777", owner: educloud }
+    - { src: db_user.sh.j2, dest: "{{ secure.app_root }}/mpass-connect/db_user.sh", mode: "0777", owner: educloud }
+    - { src: local_settings.py.j2, dest: "{{ secure.app_root }}/mpass-connect/local_settings.py", mode: "0777", owner: educloud }
+    - { src: venv.sh.j2, dest: "{{ secure.app_root }}/mpass-connect/venv.sh", mode: "0777", owner: educloud }
+    - { src: run-service.sh.j2, dest: "{{ secure.app_root }}/mpass-connect/run-service.sh", mode: "0777", owner: educloud }
+    - { src: mpass-connect.service.j2, dest: "/usr/lib/systemd/system/mpass-connect.service", mode: "0777", owner: root }
+    - { src: run-migrate.sh.j2, dest: "{{ secure.app_root }}/mpass-connect/run-migrate.sh", mode: "0777", owner: educloud }
+    - { src: connect.conf.j2, dest: /etc/httpd/conf.d/connect.conf, mode: "0644", owner: root }  
+
+
+- name: Create production database
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name:  "{{ secure.postgres.db_name }}"
+    state: present
+    template: template0
+    encoding: UTF-8
+
+
+- name: Create production database users
+  become: true
+  become_user: postgres
+  postgresql_user:
+    db: "{{ secure.postgres.db_name }}"
+    name: "{{ secure.postgres.db_user }}"
+    password: "{{ secure.postgres.db_pass }}"
+    priv: ALL
+    state: present
+
+
+- name: Create Python virtual environment & install requirements
+  become: true
+  become_user: educloud        
+  command: "{{ secure.app_root }}/mpass-connect/venv.sh"  
+
+
+- name: Run migrate if nesecary
+  command: "{{ secure.app_root }}/mpass-connect/run-migrate.sh"
+  become: true
+  become_method: sudo
+  become_user: educloud
+  when: make_migrations
+
+
+- name: Allow apache to connet to gunicorn
+  seboolean:
+    name: httpd_can_network_connect
+    state: yes
+    persistent: yes 
+
+
+- name: Enable and start mpass-connect service
+  systemd:
+    name: mpass-connect
+    enabled: yes
+    masked: no
+    state: restarted
+
+
+- name: Enable and restart Apache
+  systemd:
+    name: httpd
+    enabled: yes
+    masked: no
+    state: restarted        
+
+

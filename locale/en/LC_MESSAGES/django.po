@@ -1,0 +1,410 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-28 13:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: project/settings.py:106
+msgid "Finnish"
+msgstr ""
+
+#: project/settings.py:107
+msgid "English"
+msgstr ""
+
+#: selector/admin.py:36
+msgid "Personal info"
+msgstr ""
+
+#: selector/admin.py:37
+msgid "Permissions"
+msgstr ""
+
+#: selector/admin.py:39
+msgid "Important dates"
+msgstr ""
+
+#: selector/forms.py:59
+msgid "Token"
+msgstr ""
+
+#: selector/forms.py:75 selector/forms.py:190
+msgid "Password"
+msgstr ""
+
+#: selector/forms.py:78
+#, python-format
+msgid ""
+"Please enter a correct %(username)s and password. Note that both fields may "
+"be case-sensitive."
+msgstr ""
+
+#: selector/forms.py:80
+msgid "This account is inactive."
+msgstr ""
+
+#: selector/forms.py:147
+msgid "A user with that username already exists."
+msgstr ""
+
+#: selector/forms.py:148
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: selector/forms.py:150 selector/forms.py:184
+msgid "Username"
+msgstr ""
+
+#: selector/forms.py:152 selector/forms.py:185 selector/models.py:48
+msgid "Required. 2048 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+
+#: selector/forms.py:155 selector/forms.py:188
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+
+#: selector/forms.py:191
+msgid ""
+"Raw passwords are not stored, so there is no way to see this user's "
+"password, but you can change the password using <a href=\"password/\">this "
+"form</a>."
+msgstr ""
+
+#: selector/models.py:47
+msgid "username"
+msgstr ""
+
+#: selector/models.py:51
+msgid "Enter a valid username."
+msgstr ""
+
+#: selector/models.py:53
+msgid "first name"
+msgstr ""
+
+#: selector/models.py:54
+msgid "last name"
+msgstr ""
+
+#: selector/models.py:55
+msgid "email address"
+msgstr ""
+
+#: selector/models.py:56
+msgid "staff status"
+msgstr ""
+
+#: selector/models.py:57
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: selector/models.py:59
+msgid "active"
+msgstr ""
+
+#: selector/models.py:60
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: selector/models.py:62
+msgid "date joined"
+msgstr ""
+
+#: selector/models.py:70
+msgid "user"
+msgstr ""
+
+#: selector/models.py:71
+msgid "users"
+msgstr ""
+
+#: selector/models.py:116
+msgid "#method-email"
+msgstr ""
+
+#: selector/models.py:146
+msgid "#register-email-from-address"
+msgstr ""
+
+#: selector/models.py:147
+msgid "#registration-email-subject"
+msgstr ""
+
+#: selector/templates/associate_failed.html:9
+msgid "Association failed"
+msgstr ""
+
+#: selector/templates/associate_failed.html:10
+msgid ""
+"There was some problem with your token, authentication server or data "
+"service."
+msgstr ""
+
+#: selector/templates/auth_associate_success.html:9
+msgid "Service association success"
+msgstr ""
+
+#: selector/templates/auth_associate_success.html:10
+msgid ""
+"Your authentication service was successfully associated. You may now log in "
+"using the service."
+msgstr ""
+
+#: selector/templates/auth_info.html:9 selector/templates/profile.html:64
+msgid "Associating services"
+msgstr ""
+
+#: selector/templates/auth_info.html:10 selector/templates/profile.html:47
+#: selector/templates/profile.html.py:67
+msgid ""
+"MPASS takes care of secure authentication using the accounts of other "
+"supported services. This is a safe way for you, as you do not need to tell "
+"MPASS any of the passwords to your existing services, but you can still use "
+"them for login."
+msgstr ""
+
+#: selector/templates/auth_info.html:11 selector/templates/profile.html:68
+msgid ""
+"Press Continue and select a service of your choice. If you are not already "
+"logged in to the service, it requests you to log in. Then the service may "
+"confirm from you what you allow MPASS to do with your information. After "
+"this, you have associated the service, and can use it from now on for login!"
+msgstr ""
+
+#: selector/templates/auth_info.html:12 selector/templates/profile.html:52
+#: selector/templates/profile.html.py:71
+msgid "Continue"
+msgstr ""
+
+#: selector/templates/base.html:8
+msgid "Educloud Alliance Connector Service"
+msgstr ""
+
+#: selector/templates/base.html:43
+msgid "MPASS"
+msgstr ""
+
+#: selector/templates/base.html:49 selector/templates/search.html:23
+msgid "Search"
+msgstr ""
+
+#: selector/templates/base.html:50 selector/templates/invite.html:26
+#: selector/templates/search.html:38
+msgid "Invite"
+msgstr ""
+
+#: selector/templates/base.html:52
+msgid "Profile"
+msgstr ""
+
+#: selector/templates/base.html:54 selector/templates/register.html:22
+msgid "Register"
+msgstr ""
+
+#: selector/templates/base.html:55
+msgid "Debug"
+msgstr ""
+
+#: selector/templates/base.html:57
+msgid "Log in"
+msgstr ""
+
+#: selector/templates/base_info.html:8
+msgid "Connector"
+msgstr ""
+
+#: selector/templates/base_info.html:9
+msgid "MPASS Connector service for inviting and registering new users."
+msgstr ""
+
+#: selector/templates/base_info.html:10
+msgid "Learn more about MPASS"
+msgstr ""
+
+#: selector/templates/base_info.html:22
+msgid "Invitator"
+msgstr ""
+
+#: selector/templates/base_info.html:24
+msgid ""
+"Invitator invites new users to the system by acting as trusted party and "
+"identifying the user."
+msgstr ""
+
+#: selector/templates/base_info.html:28
+msgid "Invitee search"
+msgstr ""
+
+#: selector/templates/base_info.html:29
+msgid "Send registration tokens"
+msgstr ""
+
+#: selector/templates/base_info.html:39
+msgid "Invitee"
+msgstr ""
+
+#: selector/templates/base_info.html:41
+msgid ""
+"Invitee joins the system by authenticating with some auth source and using "
+"the registration token acquired by invitator."
+msgstr ""
+
+#: selector/templates/base_info.html:43
+msgid "Use registration token"
+msgstr ""
+
+#: selector/templates/debug.html:9
+msgid "Debug information"
+msgstr ""
+
+#: selector/templates/forms/inviteform_user.html:15
+msgid "Municipality"
+msgstr ""
+
+#: selector/templates/forms/inviteform_user.html:16
+msgid "School"
+msgstr ""
+
+#: selector/templates/forms/inviteform_user.html:17
+msgid "Role"
+msgstr ""
+
+#: selector/templates/forms/inviteform_user.html:18
+msgid "Group"
+msgstr ""
+
+#: selector/templates/forms/inviteform_user.html:30
+msgid "No users were found"
+msgstr ""
+
+#: selector/templates/invite.html:10 selector/templates/invited.html:9
+#: selector/templates/search.html:29
+msgid "Invite users"
+msgstr ""
+
+#: selector/templates/invite.html:12
+msgid ""
+"Your previous search result is remembered and you can select to which users "
+"you would like to send invitation tokens."
+msgstr ""
+
+#: selector/templates/invited.html:10
+msgid "Invite successfull. Registration tokens have been sent for the users."
+msgstr ""
+
+#: selector/templates/invited.html:11
+msgid "Here are the registration tokens, for debugging purposes:"
+msgstr ""
+
+#: selector/templates/mepin_info.html:9
+msgid "MePin"
+msgstr ""
+
+#: selector/templates/mepin_info.html:10 selector/templates/profile.html:48
+msgid "#mepin-auth-info-1"
+msgstr "MePIN on mobiilisovellus, jonka avulla voit kirjautua turvallisesti sitä tukeviin palveluihin. Voit liittää MePIN-sovelluksen helposti oppijan avaimeen jonka jälkeen kirjautumiset voi varmistaa ilman salasanoja."
+
+#: selector/templates/mepin_info.html:11 selector/templates/profile.html:49
+msgid "#mepin-auth-info-2"
+msgstr "MePIN toimii Android- ja iOS-laitteissa. Laitteestasi riippuen asenna MePIN-sovellus Appstoresta tai Google Playsta ja siirry sen jälkeen eteenpäin."
+
+#: selector/templates/mepin_info.html:12
+msgid "Start association"
+msgstr ""
+
+#: selector/templates/permission.html:7
+msgid "Permission denied"
+msgstr ""
+
+#: selector/templates/permission.html:8
+msgid ""
+"You need to have permissions to access any other than registration token "
+"page."
+msgstr ""
+
+#: selector/templates/profile.html:12
+msgid "My authentication methods"
+msgstr ""
+
+#: selector/templates/profile.html:16
+msgid "Attribute name"
+msgstr ""
+
+#: selector/templates/profile.html:17
+msgid "Attribute value"
+msgstr ""
+
+#: selector/templates/profile.html:18
+msgid "Remove"
+msgstr ""
+
+#: selector/templates/profile.html:25
+msgid "Are you sure you want delete attribute "
+msgstr ""
+
+#: selector/templates/profile.html:31
+msgid "Add other association"
+msgstr ""
+
+#: selector/templates/profile.html:32
+msgid "Add MePIN association"
+msgstr ""
+
+#: selector/templates/profile.html:43 selector/templates/profile.html.py:53
+#: selector/templates/profile.html:63 selector/templates/profile.html.py:72
+msgid "Close"
+msgstr ""
+
+#: selector/templates/profile.html:44
+msgid "MePIN"
+msgstr ""
+
+#: selector/templates/register.html:10
+msgid "Register with token"
+msgstr ""
+
+#: selector/templates/register.html:12
+msgid "You've received registration token. Enter it below."
+msgstr ""
+
+#: selector/templates/register_failed.html:9
+msgid "Registration failed"
+msgstr ""
+
+#: selector/templates/register_failed.html:10
+msgid "There was some problem with your token."
+msgstr ""
+
+#: selector/templates/register_success.html:9
+msgid "Registration success"
+msgstr ""
+
+#: selector/templates/register_success.html:10
+msgid "The registration was successful."
+msgstr ""
+
+#: selector/templates/search.html:10
+msgid "Search for users"
+msgstr ""
+
+#: selector/templates/search.html:12
+msgid ""
+"You can search for users in Role Database by school and group name. When you "
+"are satisfied with the search results you can select to which users you "
+"would like to send invitation tokens."
+msgstr ""

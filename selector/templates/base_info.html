@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+  <div class="block splash">
+    <div class="container">
+      <h1 class="splash-title">{% trans "Connector" %}</h1>
+      <div class="splash-description">{% trans "MPASS Connector service for inviting and registering new users." %}</div>
+      <div class="splash-actions"><a class="btn btn-primary btn-lg" href="http://www.mpass.fi" role="button">{% trans "Learn more about MPASS" %}</a></div>
+    </div>
+  </div>
+
+  {% block page %}{% endblock %}
+
+  <div class="block">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="featbox">
+            <h3 class="featbox-title">{% trans "Invitator" %}</h3>
+            <div class="featbox-content">
+              <p>{% trans "Invitator invites new users to the system by acting as trusted party and identifying the user." %}</p>
+              {% if user.is_authenticated %}
+                {% if perms.selector.can_invite %}
+                <ul>
+                  <li><a href="/search">{% trans "Invitee search" %}</a>
+                  <li><a href="/invite">{% trans "Send registration tokens" %}</a>
+                </ul>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="featbox">
+            <h3 class="featbox-title">{% trans "Invitee" %}</h3>
+            <div class="featbox-content">
+              <p>{% trans "Invitee joins the system by authenticating with some auth source and using the registration token acquired by invitator." %}</p>
+              <ul>
+                <li><a href="/register">{% trans "Use registration token" %}</a>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

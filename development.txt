@@ -1,0 +1,8 @@
+-r requirements.txt
+coverage==4.5.1
+django-debug-toolbar==1.9.1
+django-nose==1.4.5
+ipdb==0.11
+mock==2.0.0
+prospector==0.12.7
+pylint-django==0.9.3
