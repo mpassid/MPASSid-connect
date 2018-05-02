@@ -53,8 +53,6 @@ urlpatterns = [
   url(r'^register/success$', RegisterSuccessView.as_view(), name='register.success'),
   url(r'^register/failed$', RegisterFailedView.as_view(), name='register.failed'),
   url(r'^register/(?P<token>.*)$', RegisterTokenView.as_view(), name='register.token'),
-  url(r'^mepin$', MePinInfoView.as_view(), name='mepin.info'),
-  url(r'^mepin/associate$', MePinAssociateView.as_view(), name='mepin.associate'),
   url(r'^permission$', PermissionView.as_view(), name='permission'),
   url(r'^debug$', DebugView.as_view()),
   url(r'^saml/admin/$', login, name='login.admin'),
