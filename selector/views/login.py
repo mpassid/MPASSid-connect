@@ -48,7 +48,10 @@ def login(request, template_name='registration/login.html',
     Does the login by passing request.META to authbackend.
     If no identity found then shows the template.
     """
-    redirect_to_request = request.REQUEST.get(redirect_field_name, '')
+   # redirect_to_request = request.REQUEST.get(redirect_field_name, '')
+   #  redirect_to = settings.LOGIN_REDIRECT_URL
+
+    redirect_to_request = request.GET.get(redirect_field_name, '')
     redirect_to = settings.LOGIN_REDIRECT_URL
 
     # Ensure the user-originating redirection url is safe.
@@ -68,6 +71,7 @@ def login(request, template_name='registration/login.html',
         meta = {}
         # We store the auth data in the session. It can be handy in
         # other parts of the site.
+
         keys = [
           'HTTP_AUTHENTICATOR',
           'HTTP_AUTHNID',
@@ -81,8 +85,11 @@ def login(request, template_name='registration/login.html',
           'HTTP_MPASS_STRUCTUREDROLE',
           'HTTP_SHIB_AUTHENTICATION_METHOD',
         ]
+
+
         for k in keys:
           meta[k] = request.META.get(k, None)
+
         request.session['request_meta'] = meta
         return HttpResponseRedirect(redirect_to)
 
@@ -95,7 +102,8 @@ def login(request, template_name='registration/login.html',
     }
     if extra_context is not None:
         context.update(extra_context)
-    return TemplateResponse(request, template_name, context, current_app=current_app)
+    return TemplateResponse(request, template_name, context)
+    # , current_app = request.resolver_match.namespace)
 
 
 @sensitive_post_parameters()
@@ -106,7 +114,8 @@ def user_redirect(request, redirect_field_name=REDIRECT_FIELD_NAME):
   the SAML attributes to session and redirects to the next view.
 
   """
-  redirect_to_request = request.REQUEST.get(redirect_field_name, '')
+  # RR redirect_to_request = request.REQUEST.get(redirect_field_name, '')
+  redirect_to_request = request.GET.get(redirect_field_name, '')
 
   # Ensure the user-originating redirection url is safe.
   if is_safe_url(url=redirect_to_request, host=request.get_host()):
