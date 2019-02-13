@@ -1,5 +1,5 @@
 cffi==1.11.5
-Django==1.11.11
+Django==1.11.20
 django-floppyforms==1.7.0
 djangorestframework==3.7.7
 factory-boy==2.10.0
