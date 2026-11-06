@@ -1,3 +1,10 @@
+> [!WARNING]
+> **This repository is archived and no longer maintained.**
+> It is kept read-only for reference. No issues, pull requests or security updates will be accepted.
+> Archived on: 2026-11-06
+
+
+
 # MPASSid Auth Connector Service
 ![](http://img.shields.io/:license-mit-blue.svg)
 ![](https://travis-ci.org/mpassid/MPASSid-connect.svg?branch=master)
